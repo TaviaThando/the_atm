@@ -4,19 +4,18 @@ import java.io.InputStream;
 import java.util.Scanner;
 
 public class ATM {
+    private static Scanner scanner = new Scanner(System.in);
+    private static ValidateInput validate = new ValidateInput();
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-
-        if (!haveAccount(scanner)) {
-            createAccount(scanner);
+        if (!haveAccount()) {
+            createAccount();
         } else {
-            System.out.println("account holder: ");
+            System.out.println("cool");
         }
-//        boolean validAccNumber = new Bank(AccNumber).validateAccNumber();
     }
 
-    static boolean haveAccount(Scanner scanner) {
+    static boolean haveAccount() {
         System.out.print("Do you have an account: ");
         String haveAccount = scanner.nextLine();
 
@@ -26,29 +25,30 @@ public class ATM {
         return false;
     }
 
-    static void createAccount(Scanner scanner) {
-        ValidateInput validate = new ValidateInput();
-        String name;
-        String surname;
+    static void createAccount() {
+        GetInput input = new GetInput();
+        System.out.println("\nCreate one...");
 
-        while(true) {
-            System.out.print("name: ");
-            name = scanner.nextLine();
-            if (validate.validateName(name)) {
-                break;
-            }
-        }
+        String name = prompt("name");
+        String surname = prompt("surname");
+        String email = prompt("email");
+        String phone = prompt("phone");
+        String id = prompt("id");
 
-        while(true) {
-            System.out.print("surname: ");
-            surname = scanner.nextLine();
-            if (validate.validateName(surname)) {
-                break;
-            }
-        }
-        String info = String.format("NAME :: %s\nSURNAME :: %s",name, surname);
-        System.out.println(info);
+        Account account = new Account(name, surname, email, phone, id);
 
+        System.out.println(account.getAccounts().get(1).getAccountHolder());
     }
+
+    static String prompt(String arg) {
+        System.out.printf("%s: ", arg);
+        do {
+            arg = scanner.nextLine();
+        } while(!validate.validateName(arg));
+
+        return arg;
+    }
+
+
 
 }
