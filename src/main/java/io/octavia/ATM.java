@@ -29,6 +29,11 @@ public class ATM {
         GetInput input = new GetInput();
         System.out.println("\nCreate one...");
 
+        // SHE SAID WE'LL FIND A WAY FOR THIS...
+//        String[] args = {"name", "surname", "email", "phone", "id"};
+//        for (String arg: args) {
+//            arg = prompt(arg);
+//        }
         String name = prompt("name");
         String surname = prompt("surname");
         String email = prompt("email");
