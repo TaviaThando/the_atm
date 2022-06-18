@@ -2,6 +2,7 @@ package io.octavia;
 
 import java.io.InputStream;
 import java.util.Scanner;
+import io.octavia.Bank;
 
 public class ATM {
     private static Scanner scanner = new Scanner(System.in);
@@ -9,7 +10,7 @@ public class ATM {
 
     public static void main(String[] args) {
         if (!haveAccount()) {
-            createAccount();
+            Bank.createAccount();
         } else {
             System.out.println("cool");
         }
@@ -25,34 +26,6 @@ public class ATM {
         return false;
     }
 
-    static void createAccount() {
-        GetInput input = new GetInput();
-        System.out.println("\nCreate one...");
-
-        // SHE SAID WE'LL FIND A WAY FOR THIS...
-//        String[] args = {"name", "surname", "email", "phone", "id"};
-//        for (String arg: args) {
-//            arg = prompt(arg);
-//        }
-        String name = prompt("name");
-        String surname = prompt("surname");
-        String email = prompt("email");
-        String phone = prompt("phone");
-        String id = prompt("id");
-
-        Account account = new Account(name, surname, email, phone, id);
-
-        System.out.println(account.getAccounts().get(1).getAccountHolder());
-    }
-
-    static String prompt(String arg) {
-        System.out.printf("%s: ", arg);
-        do {
-            arg = scanner.nextLine();
-        } while(!validate.validateName(arg));
-
-        return arg;
-    }
 
 
 
