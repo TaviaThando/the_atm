@@ -1,18 +1,23 @@
 package io.octavia;
 
 public class Bank {
-    private final String AccNumber;
-    private String pin;
-    public Bank(String AccNumber) {
-        this.AccNumber = AccNumber;
-    }
 
-    public String getAccNumber() {
-        return AccNumber;
+
+    static void createAccount() {
+        GetInput input = new GetInput();
+        System.out.println("\nCreate one...");
+
+        String name = input.prompt("name");
+        String surname = input.prompt("surname");
+        String email = input.prompt("email");
+        String phone = input.prompt("phone");
+        String id = input.prompt("id");
+
+        Account account = new Account(name, surname, email, phone, id);
+        System.out.println(account.getAccountHolder());
     }
 
     public boolean validateAccNumber(){
-//        System.out.println(getAccNumber());
         return false;
     }
 
